@@ -14,10 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 //Route::get('/empleados', '\App\Http\Controllers\EmpleadosController@index' );
 //Route::get('/empleados/create', '\App\Http\Controllers\EmpleadosController@create');
 
 Route::resource('empleados', '\App\Http\Controllers\EmpleadosController');
 ;
+Auth::routes(['register'=>false, 'reset'=>false]);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
